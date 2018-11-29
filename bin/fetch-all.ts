@@ -29,7 +29,7 @@ const sessionId: string = process.env.SESSION_ID || '';
 
             await sleep(2000);
 
-            fs.writeFileSync(DATA_FOLDER + '/' + student.id, JSON.stringify(student));
+            fs.writeFileSync(DATA_FOLDER + '/' + student.id + '.json', JSON.stringify(student));
         }
 
         if (studentIds.length === 0)

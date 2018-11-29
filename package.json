@@ -1,0 +1,23 @@
+{
+    "name": "enseeiht-bde-crawl",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "clean": "rm -rf ./build;",
+        "build": "npm run clean && tsc",
+        "test": "npm run build && mocha build/test/test.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/cheerio": "^0.22.10",
+        "@types/request-promise-native": "^1.0.15"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.5"
+    }
+}

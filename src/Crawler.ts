@@ -6,8 +6,6 @@ import {Student} from "./Student";
 
 export class Crawler {
 
-    private static readonly REQUEST_COOLDOWN: number = 2000;
-
     private readonly cookieString: string;
 
     private readonly parser: Parser;
@@ -17,10 +15,6 @@ export class Crawler {
         this.cookieString = BDE.SESSION_ID_KEY + '=' + sessionId;
 
         this.parser = new Parser();
-    }
-
-    private sleep(ms: number): Promise<void> {
-        return new Promise<void>(resolve => setTimeout(resolve, ms));
     }
 
     private doGet(path: string): RequestPromise {
@@ -41,20 +35,10 @@ export class Crawler {
         return this.parser.isLogged(await this.doGet('/'));
     }
 
-    public async fetchPromotion(year: number): Promise<Student[]> {
+    public async fetchPromotion(year: number): Promise<string[]> {
 
         const url: string = `/annuaire/?q=${year}A`;
-        let studentIds: string[] = this.parser.parseSearch(await this.doGet(url));
-
-        // anti spam does not like that apparently
-        //return Promise.all(studentIds.map(studentId => this.fetchStudent(studentId)));
-
-        let students: Student[] = [];
-        for (let studentId of studentIds) {
-            await this.sleep(Crawler.REQUEST_COOLDOWN);
-            students.push(await this.fetchStudent(studentId));
-        }
-        return students;
+        return this.parser.parseSearch(await this.doGet(url));
     }
 
     public async fetchStudent(studentId: string): Promise<Student> {

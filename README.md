@@ -1,5 +1,5 @@
-# enseeiht bde crawl
+# enseeiht bde api
 
-Tool for crawling the enseeiht bde website https://www.bde.enseeiht.fr
+Tool for using enseeiht student's website
 
 Contribute freely

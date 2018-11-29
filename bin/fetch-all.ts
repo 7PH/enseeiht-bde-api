@@ -27,7 +27,7 @@ const sessionId: string = process.env.SESSION_ID || '';
 
             const student: Student = await crawl.fetchStudent(studentId);
 
-            await sleep(2000);
+            await sleep(5000);
 
             fs.writeFileSync(DATA_FOLDER + '/' + student.id + '.json', JSON.stringify(student));
         }

@@ -6,7 +6,7 @@
     "scripts": {
         "clean": "rm -rf ./build;",
         "build": "npm run clean && tsc",
-        "test": "npm run build && node build/bin/fetch-all.js"
+        "fetch-all": "npm run build && node build/bin/fetch-all.js"
     },
     "keywords": [],
     "author": "",
